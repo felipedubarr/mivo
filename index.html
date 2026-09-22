@@ -26,7 +26,10 @@
   html{scroll-behavior:smooth; scroll-padding-top: env(safe-area-inset-top,0px);}
   body{
     margin:0;
-    background:var(--cream);
+    background:
+      radial-gradient(circle at top left, rgba(217,122,61,0.18), transparent 28%),
+      radial-gradient(circle at right center, rgba(60,74,50,0.14), transparent 24%),
+      var(--cream);
     color:var(--ink);
     font-family:'Baloo 2', sans-serif;
     overflow-x:hidden;
@@ -103,7 +106,7 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    padding: 70px 0 40px;
+    padding: 74px 0 46px;
     overflow:hidden;
   }
   .hero-grid{
@@ -137,6 +140,110 @@
   .hero-ctas{display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;}
   .hero-art{position:relative; display:flex; justify-content:center;}
   .starburst{position:absolute; z-index:0;}
+
+  .hero-panel{
+    width:100%;
+    max-width:500px;
+    position:relative;
+    padding:22px;
+    border:3px solid var(--ink);
+    border-radius:32px;
+    background:
+      linear-gradient(160deg, rgba(251,243,221,0.95), rgba(242,232,206,0.88));
+    box-shadow: 10px 10px 0 var(--ink);
+    transform: rotate(-2deg);
+  }
+  .hero-panel::before,
+  .hero-panel::after{
+    content:'';
+    position:absolute;
+    inset:auto;
+    border-radius:999px;
+    z-index:0;
+    pointer-events:none;
+  }
+  .hero-panel::before{
+    width:130px; height:130px;
+    right:-28px; top:-30px;
+    background: radial-gradient(circle, rgba(232,177,59,0.45), transparent 68%);
+  }
+  .hero-panel::after{
+    width:180px; height:180px;
+    left:-38px; bottom:-42px;
+    background: radial-gradient(circle, rgba(60,74,50,0.18), transparent 68%);
+  }
+  .hero-frame{
+    position:relative;
+    z-index:1;
+    border-radius:24px;
+    overflow:hidden;
+    background: linear-gradient(180deg, #fff9eb, #efe1bf);
+    border:3px solid var(--ink);
+  }
+  .hero-frame img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    transform: scale(1.01);
+  }
+  .hero-note{
+    position:relative;
+    z-index:1;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:16px;
+    padding:14px 16px;
+    border-radius:20px;
+    background:rgba(33,29,20,0.93);
+    color:var(--paper);
+    border:3px solid var(--ink);
+    box-shadow:4px 4px 0 rgba(33,29,20,0.45);
+  }
+  .hero-note strong{display:block; font-family:'Bungee'; font-size:1rem; margin-bottom:4px;}
+  .hero-note span{font-size:.92rem; font-weight:700; line-height:1.35;}
+  .hero-pill{
+    flex:0 0 auto;
+    background:var(--mustard);
+    color:var(--ink);
+    border:2px solid var(--ink);
+    border-radius:999px;
+    padding:8px 12px;
+    font-family:'Bungee';
+    font-size:.72rem;
+    text-align:center;
+    min-width:94px;
+  }
+
+  .hero-highlights{
+    margin-top:22px;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+  }
+  .highlight-chip{
+    background:rgba(251,243,221,0.9);
+    border:3px solid var(--ink);
+    border-radius:18px;
+    padding:14px 14px 12px;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .highlight-chip b{
+    display:block;
+    font-family:'Bungee';
+    font-size:.84rem;
+    margin-bottom:6px;
+    color:var(--olive-dark);
+  }
+  .highlight-chip p{
+    margin:0;
+    font-size:.92rem;
+    line-height:1.35;
+    font-weight:700;
+    color:var(--ink);
+  }
 
   /* rubber-hose mascot */
   .mascot-wrap{position:relative; width:100%; max-width:420px;}
@@ -329,6 +436,8 @@
   @media (max-width: 900px){
     .hero-grid{grid-template-columns:1fr;}
     .hero-art{order:-1;}
+    .hero-panel{transform:none;}
+    .hero-highlights{grid-template-columns:1fr;}
     .que-es-grid{grid-template-columns:1fr;}
     .stats-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr 1fr;}
@@ -372,99 +481,34 @@
         <a href="#unirse" class="btn rust">Empezar a comprar</a>
         <a href="#como-funciona" class="btn dark">Quiero vender ↓</a>
       </div>
+      <div class="hero-highlights" aria-label="Ventajas principales de MIVO">
+        <div class="highlight-chip">
+          <b>Marca con identidad</b>
+          <p>Una estética propia que se siente local, cercana y recordable.</p>
+        </div>
+        <div class="highlight-chip">
+          <b>Venta directa</b>
+          <p>La marca conecta al productor con el comprador sin capas innecesarias.</p>
+        </div>
+        <div class="highlight-chip">
+          <b>Listo para clase</b>
+          <p>Mensaje claro, visual potente y narrativa fácil de presentar.</p>
+        </div>
+      </div>
     </div>
     <div class="hero-art">
-      <svg viewBox="0 0 420 520" width="400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- starburst behind -->
-        <path d="M210 10 L228 150 L340 60 L250 180 L410 190 L250 220 L340 340 L228 250 L210 410 L192 250 L80 340 L170 220 L10 190 L170 180 L80 60 L192 150 Z" fill="#E8B13B" stroke="#211D14" stroke-width="4"/>
-        <!-- ground shadow -->
-        <ellipse cx="210" cy="495" rx="100" ry="16" fill="#211D14" opacity="0.18"/>
-        <!-- speed lines -->
-        <path d="M18 200 L58 194 M12 220 L62 216 M22 240 L55 238" stroke="#211D14" stroke-width="5" stroke-linecap="round"/>
-        <path d="M395 300 L358 296 M402 320 L352 318" stroke="#211D14" stroke-width="5" stroke-linecap="round"/>
-
-        <!-- MIVO EAGLE MASCOT -->
-        <g>
-          <!-- back wing -->
-          <path d="M95 300 Q40 330 55 410 Q65 450 105 465 Q90 420 100 370 Q108 335 140 315 Z" fill="#211D14" stroke="#211D14" stroke-width="6"/>
-          <path d="M95 300 Q40 330 55 410 Q65 450 105 465 Q90 420 100 370 Q108 335 140 315 Z" fill="#2B2620"/>
-          <path d="M62 400 Q75 405 90 400 M60 420 Q75 426 92 420 M62 440 Q77 445 95 440" stroke="#F2E8CE" stroke-width="5" fill="none" stroke-linecap="round"/>
-
-          <!-- legs / sneakers -->
-          <rect x="168" y="430" width="26" height="45" rx="6" fill="#1C1B16" stroke="#211D14" stroke-width="5"/>
-          <rect x="226" y="430" width="26" height="45" rx="6" fill="#1C1B16" stroke="#211D14" stroke-width="5"/>
-          <path d="M158 470 q22 -10 42 0 q4 12 -6 16 h-40 q-6 -8 4 -16 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="5"/>
-          <path d="M216 470 q22 -10 42 0 q4 12 -6 16 h-40 q-6 -8 4 -16 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="5"/>
-          <circle cx="178" cy="474" r="4" fill="#D97A3D"/>
-          <circle cx="236" cy="474" r="4" fill="#D97A3D"/>
-
-          <!-- cargo pants -->
-          <path d="M150 360 Q148 410 160 434 L198 434 Q200 400 208 372 Q216 400 220 434 L258 434 Q266 410 262 360 Q210 348 150 360 Z" fill="#1C1B16" stroke="#211D14" stroke-width="6"/>
-          <rect x="158" y="392" width="26" height="24" rx="4" fill="#3C4A32" stroke="#211D14" stroke-width="4"/>
-          <path d="M167 400 l4 8 l6 -10 l6 8 l4 -8 l-4 12 h-16 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="2"/>
-          <rect x="228" y="392" width="26" height="24" rx="4" fill="#3C4A32" stroke="#211D14" stroke-width="4"/>
-
-          <!-- fanny pack strap -->
-          <path d="M138 300 L275 355" stroke="#1C1B16" stroke-width="9" stroke-linecap="round"/>
-          <rect x="150" y="330" width="46" height="38" rx="6" fill="#1C1B16" stroke="#211D14" stroke-width="5" transform="rotate(-8 173 349)"/>
-          <rect x="164" y="342" width="18" height="14" rx="2" fill="#F2E8CE" stroke="#211D14" stroke-width="3" transform="rotate(-8 173 349)"/>
-          <rect x="160" y="322" width="26" height="8" rx="2" fill="#3C4A32" stroke="#211D14" stroke-width="3" transform="rotate(-8 173 326)"/>
-
-          <!-- hoodie body -->
-          <path d="M132 262 Q100 300 108 355 Q160 372 216 366 Q262 358 268 310 Q272 270 236 250 Q184 236 132 262 Z" fill="#3C4A32" stroke="#211D14" stroke-width="6"/>
-          <path d="M132 262 Q112 280 108 310" stroke="#2E3A26" stroke-width="4" fill="none"/>
-          <!-- hoodie pocket -->
-          <path d="M175 320 Q210 312 244 322 Q244 344 210 348 Q178 344 175 320 Z" fill="#33402B" stroke="#211D14" stroke-width="4"/>
-          <!-- M emblem chest -->
-          <path d="M195 275 L200 292 L210 278 L220 292 L225 275" stroke="#F2E8CE" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- hoodie strings -->
-          <path d="M198 268 Q196 285 190 296" stroke="#F2E8CE" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path d="M222 268 Q224 285 230 296" stroke="#F2E8CE" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <circle cx="190" cy="298" r="3.5" fill="#F2E8CE" stroke="#211D14" stroke-width="1.5"/>
-          <circle cx="230" cy="298" r="3.5" fill="#F2E8CE" stroke="#211D14" stroke-width="1.5"/>
-
-          <!-- crossbody bag -->
-          <path d="M120 250 L235 350" stroke="#1C1B16" stroke-width="10" stroke-linecap="round"/>
-          <rect x="118" y="272" width="42" height="52" rx="6" fill="#1C1B16" stroke="#211D14" stroke-width="5" transform="rotate(18 139 298)"/>
-          <path d="M125 268 q14 -14 28 0" stroke="#211D14" stroke-width="5" fill="none" transform="rotate(18 139 298)"/>
-          <rect x="132" y="290" width="14" height="10" rx="2" fill="#3C4A32" stroke="#211D14" stroke-width="2.5" transform="rotate(18 139 298)"/>
-
-          <!-- front wing / arm raised thumbs up -->
-          <path d="M255 285 Q300 260 306 225 Q314 195 300 178 Q298 210 278 232 Q262 250 250 275 Z" fill="#211D14"/>
-          <path d="M255 285 Q300 260 306 225 Q314 195 300 178 Q298 210 278 232 Q262 250 250 275 Z" fill="#2B2620" stroke="#211D14" stroke-width="5"/>
-          <!-- feather glove / hand -->
-          <ellipse cx="300" cy="180" rx="17" ry="21" fill="#211D14" stroke="#211D14" stroke-width="5" transform="rotate(-20 300 180)"/>
-          <path d="M292 165 q6 -14 14 -10 M300 158 q4 -14 12 -8 M310 160 q2 -12 10 -4" stroke="#211D14" stroke-width="7" stroke-linecap="round"/>
-
-          <!-- neck feather ruffle -->
-          <path d="M182 248 Q210 262 238 248 L232 264 Q210 274 188 264 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="4"/>
-
-          <!-- head -->
-          <circle cx="210" cy="170" r="68" fill="#F2E8CE" stroke="#211D14" stroke-width="6"/>
-          <!-- dark feather crest / hair -->
-          <path d="M148 150 Q140 100 175 78 Q168 108 180 120 Q182 84 215 66 Q206 100 220 116 Q226 82 258 76 Q244 106 250 128 Q270 118 278 96 Q276 130 258 150 Q220 128 148 150 Z" fill="#211D14"/>
-          <!-- cap -->
-          <path d="M150 132 Q210 84 270 132 Q270 112 232 100 Q210 92 188 100 Q160 110 150 132 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="5"/>
-          <path d="M150 132 Q210 84 270 132" fill="none" stroke="#211D14" stroke-width="5"/>
-          <ellipse cx="142" cy="136" rx="22" ry="10" fill="#3C4A32" stroke="#211D14" stroke-width="5"/>
-          <rect x="196" y="98" width="28" height="24" rx="4" fill="#3C4A32" stroke="#211D14" stroke-width="4"/>
-          <path d="M202 106 l3 8 l5 -9 l5 8 l4 -8 l-3 11 h-14 Z" fill="#F2E8CE" stroke="#211D14" stroke-width="1.6"/>
-
-          <!-- eyebrow / smirk look -->
-          <path d="M170 158 Q182 148 198 154" stroke="#211D14" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M225 152 Q240 142 254 150" stroke="#211D14" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- eyes -->
-          <circle cx="186" cy="168" r="13" fill="#211D14"/>
-          <circle cx="191" cy="163" r="4" fill="#F2E8CE"/>
-          <path d="M232 168 Q244 160 256 168" stroke="#211D14" stroke-width="7" fill="none" stroke-linecap="round"/>
-          <!-- beak -->
-          <path d="M170 182 Q210 172 246 186 Q225 214 205 214 Q182 212 170 182 Z" fill="#1C1B16" stroke="#211D14" stroke-width="5"/>
-          <path d="M175 186 Q210 196 240 190" stroke="#D97A3D" stroke-width="4" fill="none" stroke-linecap="round"/>
-          <path d="M182 186 Q210 178 236 190" fill="#D97A3D" stroke="#211D14" stroke-width="4"/>
-          <!-- motion marks near head -->
-          <path d="M118 130 l14 -10 M108 148 l16 -4 M292 130 l-14 -10 M300 150 l-16 -6" stroke="#211D14" stroke-width="6" stroke-linecap="round"/>
-        </g>
-      </svg>
+      <div class="hero-panel">
+        <div class="hero-frame">
+          <img src="mivo.png" alt="Mascota de MIVO con gorra, hoodie y gesto de señalamiento" />
+        </div>
+        <div class="hero-note">
+          <div>
+            <strong>MIVO en imagen</strong>
+            <span>Una mascota con personalidad, ropa urbana y una actitud pensada para captar atención.</span>
+          </div>
+          <div class="hero-pill">BRAND</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -502,7 +546,7 @@
       </div>
       <div class="card">
         <div class="card-icon">🇨🇴</div>
-        <h3>Por que lo hacemos</h3>
+        <h3>Por qué lo hacemos</h3>
         <p>Creemos en el crecimiento económico de Colombia, y en darle a los negocios nacionales una forma directa y accesible de llegar a más gente.</p>
       </div>
     </div>

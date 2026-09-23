@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Registro — MIVO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{ --cream:#F2E8CE; --ink:#211D14; --olive-dark:#242E1C; --mustard:#E8B13B }
+    *{box-sizing:border-box} body{margin:0; font-family:'Baloo 2',sans-serif; background:var(--cream); color:var(--ink);}
+    .wrap{max-width:780px;margin:32px auto;padding:24px}
+    header{padding:18px 24px;border-bottom:3px solid var(--ink);background:linear-gradient(180deg,#fff9eb,#efe1bf)}
+    .logo{font-family:'Bungee'; font-size:1.6rem}
+    .card{background:#fff;padding:28px;border-radius:16px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+    h1{font-family:'Bungee';margin:0 0 12px}
+    label{display:block;margin-top:12px;font-weight:700}
+    input, textarea{width:100%;padding:10px;border:2px solid #ccc;border-radius:8px;margin-top:6px;font-size:1rem}
+    .actions{display:flex;gap:12px;margin-top:18px}
+    .btn{background:var(--mustard);border:3px solid var(--ink);padding:12px 18px;border-radius:999px;font-weight:800;cursor:pointer}
+    .btn.ghost{background:transparent}
+    footer{margin-top:26px;text-align:center;color:var(--olive-dark);font-weight:700}
+    a{color:var(--ink);text-decoration:none}
+  </style>
+</head>
+<body>
+  <header class="wrap"><div class="logo">♛ MIVO — Registro</div></header>
+  <main class="wrap">
+    <div class="card">
+      <h1>Regístrate en MIVO</h1>
+      <p style="font-weight:700;opacity:.9">Completa este formulario para vender en la plataforma. Es una demo local (no se envía realmente).</p>
+      <form action="#" method="post" onsubmit="alert('Formulario enviado (demo).'); return false;">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" required>
+
+        <label for="email">Correo electrónico</label>
+        <input id="email" type="email" name="email" required>
+
+        <label for="negocio">Nombre del negocio</label>
+        <input id="negocio" name="negocio">
+
+        <label for="mensaje">Mensaje / ¿Qué vendes?</label>
+        <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+        <div class="actions">
+          <button class="btn" type="submit">Enviar registro</button>
+          <a class="btn ghost" href="mivo-landing.html">Volver a MIVO</a>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <p>Síguenos en <a href="https://instagram.com/ejemplo" target="_blank" rel="noopener">Instagram</a></p>
+    </footer>
+  </main>
+</body>
+</html>
